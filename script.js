@@ -38,7 +38,53 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeWriter, 500);
 
 
-    // --- Feature 3: Smooth Scroll with Active Link Highlighting ---
+    // --- Feature 3: Dynamic Project Rendering (New) ---
+    // This renders your projects into the "boxes" automatically
+    const projects = [
+        {
+            title: "DriveX Car Rental System",
+            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Includes an admin dashboard for inventory management.",
+            tech: ["HTML/JS", "MySQL", "PHP"]
+        },
+        {
+            title: "AR Interior Visualizer",
+            description: "An Augmented Reality mobile app built with Unity. It allows users to scan their room and place virtual 3D furniture to visualize fit and style before buying.",
+            tech: ["Unity 3D", "C#", "AR Foundation"]
+        },
+        {
+            title: "Fleet Management DB",
+            description: "Designed a normalized MySQL database architecture for a logistics company, optimizing queries to track vehicle maintenance and availability in real-time.",
+            tech: ["MySQL", "Data Modeling"]
+        }
+    ];
+
+    const projectContainer = document.querySelector('.projects-grid');
+    
+    // Only run if the container exists
+    if (projectContainer) {
+        projectContainer.innerHTML = ''; // Clear any hardcoded HTML
+        
+        projects.forEach(project => {
+            // Generate tags HTML
+            const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
+            
+            // Create the card HTML structure
+            const cardHtml = `
+                <article class="project-card">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="tech-stack">
+                        ${tagsHtml}
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </article>
+            `;
+            projectContainer.innerHTML += cardHtml;
+        });
+    }
+
+
+    // --- Feature 4: Smooth Scroll with Active Link Highlighting ---
     window.addEventListener('scroll', () => {
         let current = '';
         const sections = document.querySelectorAll('section');
@@ -60,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Feature 4: Form Submission (Front-end only) ---
+    // --- Feature 5: Form Submission (Front-end only) ---
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
