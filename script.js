@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
-        // Optional: Animate hamburger bars
         hamburger.classList.toggle('toggle');
     });
 
@@ -22,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
-    const textToType = "Optimizing Data | Designing Architectures | Securing Information";
+    
+    // UPDATED: This line controls the animated text in the Hero section
+    const textToType = "Web Development | Car Rental Systems | AR Unity Specialist";
+    
     let charIndex = 0;
     
     function typeWriter() {
@@ -38,14 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 3: Smooth Scroll with Active Link Highlighting ---
-    // (CSS handles smooth scroll, but JS updates the active state in nav)
     window.addEventListener('scroll', () => {
         let current = '';
         const sections = document.querySelectorAll('section');
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
             // Check if we have scrolled down to this section
             if (scrollY >= (sectionTop - 200)) {
                 current = section.getAttribute('id');
